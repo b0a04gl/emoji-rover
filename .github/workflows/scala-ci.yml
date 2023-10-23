@@ -16,8 +16,7 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v2
         with:
-          java-version: 1.8
-          distribution: 'openjdk'
+          java-version: 11
 
       - name: Build with sbt
         run: sbt compile
