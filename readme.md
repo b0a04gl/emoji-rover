@@ -50,7 +50,7 @@ To run the project:
 
 4. Start the Python Flask web application to serve the web page.
 
-5. Open the web page in your browser to see emojis being animated in real-time.
+5. Open the web page ([emoji-fanout-index.html](emoji-fanout%2Femoji-fanout-index.html)) in your browser to see emojis being animated in real-time.
 
 ## Project Configuration
 
@@ -66,4 +66,6 @@ To run the project:
 - JavaScript (for frontend animation)
 
 ## Demo
-TBD
+tadaaaa 🚀🚀🚀🚀
+![Untitled design (1).gif](resources%2FUntitled%20design%20%281%29.gif)
+
