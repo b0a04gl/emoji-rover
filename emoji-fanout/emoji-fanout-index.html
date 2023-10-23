@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Emojis Fanout</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .emoji-container {
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .emoji {
+            font-size: 24px;
+          
+            animation: flyUp 10s linear infinite;
+            white-space: nowrap;
+            opacity: 0;
+          
+        }
+
+        @keyframes flyUp {
+            0% {
+                transform: translateY(100vh);
+              
+                opacity: 1;
+              
+            }
+
+            75% {
+                transform: translateY(25vh);
+              
+                opacity: 1;
+              
+            }
+
+            100% {
+                transform: translateY(-10vh);
+              
+                opacity: 0;
+              
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="emoji-container" id="emoji-container">
+        <!-- Emojis will be dynamically added here -->
+    </div>
+    <script>
+       const emojiContainer = document.getElementById("emoji-container");
+
+async function displayEmojis() {
+  var data = JSON.parse('{{ emoji_map | tojson }}');
+  const emojis = Object.keys(data);
+  const emoji_pool = [];
+
+  
+  for (const emoji of emojis) {
+    for (let i = 0; i < data[emoji]; i++) {
+      emoji_pool.push(emoji);
+    }
+  }
+  shuffleArray(emoji_pool);
+
+  
+  const batchSize = 10;
+  const delayBetweenBatches = 2000; 
+
+  for (let i = 0; i < emoji_pool.length; i += batchSize) {
+    const batch = emoji_pool.slice(i, i + batchSize);
+    displayEmojiBatch(batch);
+    if (i + batchSize < emoji_pool.length) {
+      await new Promise(resolve => setTimeout(resolve, delayBetweenBatches));
+    }
+  }
+}
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+function displayEmojiBatch(batch) {
+    batch.forEach((emoji, index) => {
+    const emojiElement = document.createElement("div");
+    emojiElement.className = "emoji";
+    emojiElement.textContent = emoji;
+
+    
+    if (index < batch.length - 1) {
+      emojiElement.style.marginRight = "10px"; 
+    }
+
+    emojiContainer.appendChild(emojiElement);
+  });
+}
+
+displayEmojis();
+
+    </script>
+</body>
+
+</html>
