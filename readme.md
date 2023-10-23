@@ -5,7 +5,7 @@ Emoji Rover is a real-time data processing project that involves sending and agg
 
 ## Inspiration for this work
 
-![emoji-rover](https://miro.medium.com/v2/resize:fit:1190/1*rSRWALA4XzOdDcn-5vv7Zw.gif)
+![emoji-rover](resources/hotstar_emoji.gif)
 
 [Capturing A Billion Emo(j)i-ons. Moving from a third party system to our… | by Dedeepya Bonthu | Disney+ Hotstar](https://blog.hotstar.com/capturing-a-billion-emojis-62114cc0b440)
 
